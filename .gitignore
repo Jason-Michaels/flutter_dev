@@ -23,6 +23,7 @@
 .vscode/
 
 # Flutter repo-specific
+/flutter/
 /bin/cache/
 /bin/mingit/
 /dev/benchmarks/mega_gallery/
