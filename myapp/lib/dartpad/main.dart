@@ -4,6 +4,29 @@ void main() {
   runApp(MyApp());
 }
 
+Route<dynamic> generateRoute(RouteSettings settings) {
+  switch(settings.name) {
+      case'/':
+        return MaterialPageRoute(builder: (context) => MyHomePage());
+    case 'login':
+      return MaterialPageRoute(builder: (context) => OtherPage());
+    default:
+      return MaterialPageRoute(builder: (context) => MyHomePage());
+  }
+}
+
+class OtherPage extends StatelessWidget {
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+          child: Text('Other Page'),
+        ),
+    );
+  }
+}
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -11,6 +34,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false, //debug flag begone
       title: 'Flutter Demo',
+      onGenerateRoute: generateRoute,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
