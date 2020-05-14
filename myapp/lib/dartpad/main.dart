@@ -4,17 +4,23 @@ void main() {
   runApp(MyApp());
 }
 
+//route names
+const String HomeViewRoute = '/';
+const String OtherPageRoute = 'other';
+
+//route logic
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch(settings.name) {
-      case'/':
+      case HomeViewRoute:
         return MaterialPageRoute(builder: (context) => MyHomePage());
-    case 'login':
+    case OtherPageRoute:
       return MaterialPageRoute(builder: (context) => OtherPage());
     default:
       return MaterialPageRoute(builder: (context) => MyHomePage());
   }
 }
 
+//quick other page
 class OtherPage extends StatelessWidget {
   
   @override
@@ -35,19 +41,20 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false, //debug flag begone
       title: 'Flutter Demo',
       onGenerateRoute: generateRoute,
+      initialRoute: HomeViewRoute,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      //home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  //MyHomePage({Key key, this.title}) : super(key: key);
 
-  final String title;
+  final String title = 'Flutter Demo Home Page';
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
