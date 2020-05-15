@@ -26,10 +26,7 @@ class OtherPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        onWillPop: () async {
-          print('Back not allowed');
-          return false;
-          },
+        onWillPop: () => Future.value(false),
         child: Scaffold(
           body: Center(
               child: Column(
