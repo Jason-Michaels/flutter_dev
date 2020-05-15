@@ -25,19 +25,24 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 class OtherPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-            Text('Other Page'),
-            RaisedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text('Go back a page'))
-          ])),
-    );
+    return WillPopScope(
+        onWillPop: () async {
+          print('Back not allowed');
+          return false;
+          },
+        child: Scaffold(
+          body: Center(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                Text('Other Page'),
+                RaisedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text('Go back a page'))
+              ])),
+        ));
   }
 }
 
