@@ -56,6 +56,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       onGenerateRoute: generateRoute,
       initialRoute: HomeViewRoute,
+      //onUnknownRoute: (settings) => MaterialPageRoute(builder: (context) => UnknownPage(name: settings.name)),
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -99,6 +100,12 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, OtherPageRoute);
+              },
+              child: Text('Other page')
             ),
           ],
         ),
