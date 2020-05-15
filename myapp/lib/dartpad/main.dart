@@ -16,7 +16,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case OtherPageRoute:
       return MaterialPageRoute(builder: (context) => OtherPage());
     default:
-      return MaterialPageRoute(builder: (context) => MyHomePage());
+      return MaterialPageRoute(builder: (context) => UnknownPage(name: settings.name));
   }
 }
 
@@ -28,6 +28,20 @@ class OtherPage extends StatelessWidget {
     return Scaffold(
       body: Center(
           child: Text('Other Page'),
+        ),
+    );
+  }
+}
+
+//for when route is unknown page
+class UnknownPage extends StatelessWidget {
+  final String name;
+  const UnknownPage({Key key, this.name}) : super(key:key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+          child: Text('Route for $name is not defined'),
         ),
     );
   }
