@@ -10,25 +10,33 @@ const String OtherPageRoute = 'other';
 
 //route logic
 Route<dynamic> generateRoute(RouteSettings settings) {
-  switch(settings.name) {
-      case HomeViewRoute:
-        return MaterialPageRoute(builder: (context) => MyHomePage());
+  switch (settings.name) {
+    case HomeViewRoute:
+      return MaterialPageRoute(builder: (context) => MyHomePage());
     case OtherPageRoute:
       return MaterialPageRoute(builder: (context) => OtherPage());
     default:
-      return MaterialPageRoute(builder: (context) => UnknownPage(name: settings.name));
+      return MaterialPageRoute(
+          builder: (context) => UnknownPage(name: settings.name));
   }
 }
 
 //quick other page
 class OtherPage extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child: Text('Other Page'),
-        ),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+            Text('Other Page'),
+            RaisedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('Go back a page'))
+          ])),
     );
   }
 }
@@ -36,13 +44,13 @@ class OtherPage extends StatelessWidget {
 //for when route is unknown page
 class UnknownPage extends StatelessWidget {
   final String name;
-  const UnknownPage({Key key, this.name}) : super(key:key);
+  const UnknownPage({Key key, this.name}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child: Text('Route for $name is not defined'),
-        ),
+        child: Text('Route for $name is not defined'),
+      ),
     );
   }
 }
@@ -102,11 +110,10 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headline4,
             ),
             RaisedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, OtherPageRoute);
-              },
-              child: Text('Other page')
-            ),
+                onPressed: () {
+                  Navigator.pushNamed(context, OtherPageRoute);
+                },
+                child: Text('Other page')),
           ],
         ),
       ),
